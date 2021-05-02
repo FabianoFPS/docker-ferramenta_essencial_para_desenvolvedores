@@ -7,9 +7,6 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/bitbucket/issues-raw/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores)](https://github.com/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -33,6 +30,7 @@
 - [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
+- [Histórico de comandos](#historico_comandos)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -110,7 +108,7 @@ Add additional notes about how to deploy this on a live system.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@FabianoFPS](https://github.com/FabianoFPS)
 
 See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
 
@@ -119,3 +117,59 @@ See also the list of [contributors](https://github.com/kylelobo/The-Documentatio
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+
+## Histórico de comandos <a name = "historico_comandos"></a>
+
+```bash
+
+# Testa se io Docker está funcionando corretamente, executando a imagem hello-world
+docker container run hello-world
+
+# Demostra uma possivel diferença entre o host e o container
+bash --version
+docker container run debian bash --version
+
+# Containers em execução
+docker container ps
+
+# Todos os containers
+docker container ps -a
+
+# Executa e remove
+# --rm remove um container
+docker run --rm debian bash --version
+
+# Metodo run sempre cria um novo container
+# -i modo interativo
+# -t acesso ao terminal
+docker run -it debian bash
+touch arquivo_criado.txt
+ls
+exit
+docker run -it debian bash
+ls
+
+# --name especifica o nome do container 
+docker run --name mydeb -it debian bash
+
+# Lista Container em execução
+docker container ls
+
+# Liesta todos os Containers
+docker container ls -a
+
+# excuta o container em modo interativo pelo nome
+docker start -ai mydeb
+
+# -p porta_exposta:porta_interna
+docker run -p 8080:80 nginx
+
+# -v pasta_local:pasta_container
+docker run -p 8080:80 -v $(pwd)/not-found:/usr/share/nginx/html  nginx
+docker run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html  nginx
+
+# -d deamom
+docker run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
+docker stop ex-daemon-basic
+
+```

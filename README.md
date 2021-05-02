@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="" rel="noopener">
+  <a href="https://www.cod3r.com.br/courses/docker" rel="noopener">
  <img height=200px src=".files_readme/docker.webp" alt="Project logo"></a>
 </p>
 
@@ -8,7 +8,7 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores/issues)
+[![GitHub Issues](https://img.shields.io/bitbucket/issues-raw/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores)](https://github.com/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/FabianoFPS/docker-ferramenta_essencial_para_desenvolvedores/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 

@@ -122,7 +122,7 @@ See also the list of [contributors](https://github.com/kylelobo/The-Documentatio
 
 ```bash
 
-# Testa se io Docker está funcionando corretamente, executando a imagem hello-world
+# Testa se o Docker está funcionando corretamente, executando a imagem hello-world
 docker container run hello-world
 
 # Demostra uma possivel diferença entre o host e o container
@@ -171,5 +171,40 @@ docker run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html  nginx
 # -d deamom
 docker run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
 docker stop ex-daemon-basic
+docker start ex-daemon-basic
+docker restart ex-daemon-basic
+docker stop 4ed0223e8809
+
+# lista cointainers
+docker ps
+docker container ls
+docker container list
+
+# logs
+docker container logs ex-daemon-basic
+
+# informações do container
+docker container inspect ex-daemon-basic
+
+# exec executa um comando no container
+docker container exec ex-daemon-basic uname -or
+
+# listando
+docker container ls
+docker image ls
+docker volume ls
+
+# comandos antigos
+# rm remove container
+# rmi remove image
+docker rm idxxxxx
+docker rmi idxxxxx
+
+# remove container
+docker container rm 2d9a61655ac0 
+
+# remove image
+docker image rm d1165f221234
+
 
 ```

@@ -206,5 +206,17 @@ docker container rm 2d9a61655ac0
 # remove image
 docker image rm d1165f221234
 
+# helps
+docker container --help
+docker image --help 
+docker volume --help
 
+# baixa imagem
+docker image pull redis:latest
+
+#inspeciona
+docker image inspect redis
+
+# cria nova tag para uma imgem
+docker image tag redis:latest cod3r-redis
 ```

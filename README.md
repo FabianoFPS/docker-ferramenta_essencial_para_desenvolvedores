@@ -101,10 +101,7 @@ Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Docker](https://www.docker.com/) - Container
 
 ## ✍️ Authors <a name = "authors"></a>
 
@@ -219,4 +216,24 @@ docker image inspect redis
 
 # cria nova tag para uma imgem
 docker image tag redis:latest cod3r-redis
+
+# cria image build
+# it tag
+docker image build -t ex-simple-buid .
+
+# Image com argumentos
+docker build -t ex-build-arg ./build-com-arg
+docker image ls
+docker container run ex-build-arg bash -c 'echo $S3_BUCKET'
+docker image build --build-arg S3_BUCKET=myapp -t ex-build-arg ./build-com-arg
+docker image inspect --format="{{index .Config.Labels \"maintainer\"}}" ex-build-arg
+
+# Copiando arquivos
+docker image build -t ex-build-copy ./build-com-copy
+docker container run -p 80:80 ex-build-copy
+
+# Criando e compartilhando volumes
+docker image build -t ex-build-dev ./build-dev
+docker container run -it -v $(pwd)/build-dev:/app -p 80:8000 --name python-server ex-build-dev
+docker container run -it --volumes-from=python-server debian cat /log/http-server.log
 ```

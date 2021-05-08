@@ -236,4 +236,48 @@ docker container run -p 80:80 ex-build-copy
 docker image build -t ex-build-dev ./build-dev
 docker container run -it -v $(pwd)/build-dev:/app -p 80:8000 --name python-server ex-build-dev
 docker container run -it --volumes-from=python-server debian cat /log/http-server.log
+
+# upload Docker hub
+docker image tag ex-build-copy fabianofps/ex-cod3r:1.0
+docker login --username=fabianofps
+docker image push fabianofps/ex-cod3r:1.0
+
+# Redes
+docker network ls
+
+# Sem rede
+docker container run -d --net none debian
+docker container run --rm alpine ash -c "ifconfig"
+docker container run --rm --net none alpine ash -c "ifconfig"
+
+# rede Bridge
+docker network ls
+docker network inspect bridge
+
+docker container run -d --name container1 alpine sleep 1000
+docker container exec -it container1 ifconfig
+
+docker container run -d --name container2 alpine sleep 1000
+docker container exec -it container2 ifconfig
+
+docker container exec -it container1 ping 172.17.0.3
+docker container exec -it container1 ping www.google.com
+
+#Criando nova rede
+docker network create --driver bridge rede_nova
+docker network ls
+docker network inspect rede_nova
+
+docker container run -d --name container3 --net rede_nova alpine sleep 1000
+docker container exec -it container3 ifconfig
+docker container exec -it container3 ping 172.17.0.2
+
+# Conecta redes diferentes
+docker network connect bridge container3
+docker container exec -it container3 ifconfig
+docker container exec -it container3 ping 172.17.0.2
+
+# Desconecta rede
+docker network disconnect bridge container3
+docker container exec -it container3 ifconfig
 ```

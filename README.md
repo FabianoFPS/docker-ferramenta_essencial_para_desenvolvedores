@@ -280,4 +280,8 @@ docker container exec -it container3 ping 172.17.0.2
 # Desconecta rede
 docker network disconnect bridge container3
 docker container exec -it container3 ifconfig
+
+# Rede do host
+docker container run -d --name container4 --net host alpine sleep 1000
+docker container exec -it container4 ifconfig
 ```

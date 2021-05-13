@@ -284,4 +284,7 @@ docker container exec -it container3 ifconfig
 # Rede do host
 docker container run -d --name container4 --net host alpine sleep 1000
 docker container exec -it container4 ifconfig
+
+# Montas as imagens a partir do docker-compose.yml
+docker-compose up 
 ```

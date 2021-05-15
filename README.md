@@ -286,5 +286,23 @@ docker container run -d --name container4 --net host alpine sleep 1000
 docker container exec -it container4 ifconfig
 
 # Montas as imagens a partir do docker-compose.yml
-docker-compose up 
+docker-compose up
+
+# Compose em modo desatachado
+docker-compose up -d
+
+# Lista os processoe 
+docker-compose ps
+
+# Listar bancos de dados a instância ativa
+docker-compose exec db psql -U postgres -c '\l'
+
+# Sobre o serviço associado ao docker-compose
+docker-compose up
+
+# Para os container associados ao docker-compose
+docker-compose down
+
+# Executa file no container do pstgres
+docker-compose exec db psql -U postgres -f /scripts/check.sql
 ```

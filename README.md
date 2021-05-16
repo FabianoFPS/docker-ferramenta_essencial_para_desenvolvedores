@@ -305,4 +305,13 @@ docker-compose down
 
 # Executa file no container do pstgres
 docker-compose exec db psql -U postgres -f /scripts/check.sql
+
+# Logs
+docker-compose logs -f -t
+
+# Select no banco
+docker-compose exec db psql -U postgres -d email_sender -c 'select * from emails'
+
+# Cria 3 instanvias do container worker
+docker-compose up -d --scale worker=3
 ```

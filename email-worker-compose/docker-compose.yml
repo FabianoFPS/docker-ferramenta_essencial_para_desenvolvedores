@@ -49,6 +49,8 @@ services:
     depends_on: 
       - db
       - queue
+    environment: 
+      - DB_NAME=db_errado_correto_em_override
 
   queue:
     image: redis:3.2
